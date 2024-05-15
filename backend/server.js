@@ -2,12 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passportConfig = require("./lib/passportConfig");
-const nodemailer=require('nodemailer');
+const nodemailer = require("nodemailer");
 const { v4: uuidv4 } = require("uuid");
 var cors = require("cors");
 const fs = require("fs");
 
-require("dotenv").config()
+require("dotenv").config();
 // // MongoDsB
 // mongoose
 //   .connect("mongodb://localhost:27017/jobPortal", {
@@ -19,12 +19,15 @@ require("dotenv").config()
 //   .then((res) => console.log("Connected to DB.."))
 //   .catch((err) => console.log(err));
 
-
-const db = require('./config/keys').mongoURI;
+const db = require("./config/keys").mongoURI;
 mongoose
-  .connect( db,{ useNewUrlParser: true ,useUnifiedTopology: true, useFindAndModify: false})
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
 // initialising directories
 if (!fs.existsSync("./public")) {
